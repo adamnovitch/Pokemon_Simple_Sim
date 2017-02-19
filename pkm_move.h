@@ -1,5 +1,6 @@
 #include <string>
 #include "typechart.h"
+#include "statdef.h"
 
 class Move
 {
@@ -9,8 +10,7 @@ private:
 	int BP;
 	int AC;
 	int PP;
-	int buff;
-	int to_stat;
+	int move_type; //Physical, Special, or Status
 
 public:
 	//constructor
@@ -20,50 +20,21 @@ public:
 		BP = 0;
 		AC = 100;
 		PP = 40;
-		buff = 0;
-		to_stat = 0;
+		move_type = STATUS;
 	}
-	Move(std::string name_in, int type_in, int bp_in, int ac_in, int pp_in, int buff_in, int to_stat_in) {
+	Move(std::string name_in, int type_in, int bp_in, int ac_in, int pp_in, int m_type_in) {
 		Name = name_in;
 		type = type_in;
 		BP = bp_in;
 		AC = ac_in;
 		PP = pp_in;
-		buff = buff_in;
-		to_stat = to_stat_in;
+		move_type = m_type_in;
 	}
 
-	//get name
-	std::string get_name() {
-		return Name;
-	}
-
-	//get type
-	int get_type() {
-		return type;
-	}
-
-	//get bp
-	int get_bp() {
-		return BP;
-	}
-
-	//get ac
-	int get_ac() {
-		return AC;
-	}
-
-	//get pp
-	int get_pp() {
-		return PP;
-	}
-
-	//get buff
-	int get_buff() {
-		return buff;
-	}
-
-	int get_to_stat() {
-		return to_stat;
-	}
+	std::string get_name() {return Name;}
+	int get_type() {return type;}
+	int get_bp() {return BP;}
+	int get_ac() {return AC;}
+	int get_pp() {return PP;}
+	int get_m_type() {return move_type;}
 };
