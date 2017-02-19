@@ -8,13 +8,11 @@ using namespace std;
 int main (int argc, char* argv[])
 {
 
-	Pokemon *Noze0 = new Pokemon("Noze_Zelle",50);
-	Pokemon *Noze1 = new Pokemon("Nosepass",100);
-
-	Noze0->set_current_move(1,Move("Swords Dance",NORMAL,0,0,20,20,1));
+//	Pokemon *Noze0 = new Pokemon("Noze_Zelle",50);
+//	Pokemon *Noze1 = new Pokemon("Nosepass",100);
 
 	cout << "Battle!!!" << endl;
-	cout << Noze0->get_nick() << " vs " << Noze1->get_nick() << endl;
+/*	cout << Noze0->get_nick() << " vs " << Noze1->get_nick() << endl;
 
 	Noze0->battle();
 	Noze1->battle();
@@ -48,6 +46,6 @@ int main (int argc, char* argv[])
 		if (Noze0->get_battle_stat(0) <= 0 || Noze1->get_battle_stat(0) <= 0) {
 			break;
 		}
-	}
+	}*/
 	return 0;
 }
