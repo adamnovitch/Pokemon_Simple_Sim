@@ -12,46 +12,30 @@ class Pokemon : public Species
 	//int IV[6];
 	//int EV[6];
 
-	struct learnset
-	{
-		int level;
-		Move move;
-	};
-
-	learnset level_up_moves[10];
-
 	public:
 
 	Pokemon() {
 		Species();
 
-		level_up_moves[0].level = 1;
-		level_up_moves[0].move = get_move(0);
-		level_up_moves[1].level = 10;
-		level_up_moves[1].move = get_move(1);
-		level_up_moves[2].level = 20;
-		level_up_moves[2].move = get_move(2);
-
 		Nickname = get_name();
-		set_current_move(0,level_up_moves[0].move);
 
-		stats[0] = get_stat(0);  //HP
-		stats[1] = get_stat(1);  //Attack
-		stats[2] = get_stat(2);  //Defense
-		stats[3] = get_stat(3);  //Sp. Attack
-		stats[4] = get_stat(4);  //Sp. Defense
-		stats[5] = get_stat(5);  //Speed
+		stats[HP]         = get_stat(HP);
+		stats[ATTACK]     = get_stat(ATTACK);
+		stats[DEFENSE]    = get_stat(DEFENSE);
+		stats[SP_ATTACK]  = get_stat(SP_ATTACK);
+		stats[SP_DEFENSE] = get_stat(SP_DEFENSE);
+		stats[SPEED]      = get_stat(SPEED);
 
-		battle_stats[0] = stats[0];
-		battle_stats[1] = stats[1];
-		battle_stats[2] = stats[2];
-		battle_stats[3] = stats[3];
-		battle_stats[4] = stats[4];
-		battle_stats[5] = stats[5];
-		battle_stats[6] = 100;
-		battle_stats[7] = 100;
+		battle_stats[HP]         = stats[HP];
+		battle_stats[ATTACK]     = stats[ATTACK];
+		battle_stats[DEFENSE]    = stats[DEFENSE];
+		battle_stats[SP_ATTACK]  = stats[SP_ATTACK];
+		battle_stats[SP_DEFENSE] = stats[SP_DEFENSE];
+		battle_stats[SPEED]      = stats[SPEED];
+		battle_stats[ACCURACY]   = 100;
+		battle_stats[EVADE]      = 100;
 
-		level = 5;
+		level = 1;
 		happiness = 70;
 		//int IV[6];
 		//int EV[6];
@@ -60,31 +44,23 @@ class Pokemon : public Species
 	Pokemon(std::string nick, int level_in) {
 		Species();
 
-		level_up_moves[0].level = 1;
-		level_up_moves[0].move = get_move(0);
-		level_up_moves[1].level = 10;
-		level_up_moves[1].move = get_move(1);
-		level_up_moves[2].level = 20;
-		level_up_moves[2].move = get_move(2);
-
 		Nickname = nick;
-		set_current_move(0,level_up_moves[0].move);
 
-		stats[0] = get_stat(0);  //HP
-		stats[1] = get_stat(1);  //Attack
-		stats[2] = get_stat(2);  //Defense
-		stats[3] = get_stat(3);  //Sp. Attack
-		stats[4] = get_stat(4);  //Sp. Defense
-		stats[5] = get_stat(5);  //Speed
+		stats[HP]         = get_stat(HP);
+		stats[ATTACK]     = get_stat(ATTACK);
+		stats[DEFENSE]    = get_stat(DEFENSE);
+		stats[SP_ATTACK]  = get_stat(SP_ATTACK);
+		stats[SP_DEFENSE] = get_stat(SP_DEFENSE);
+		stats[SPEED]      = get_stat(SPEED);
 
-		battle_stats[0] = stats[0];
-		battle_stats[1] = stats[1];
-		battle_stats[2] = stats[2];
-		battle_stats[3] = stats[3];
-		battle_stats[4] = stats[4];
-		battle_stats[5] = stats[5];
-		battle_stats[6] = 100;
-		battle_stats[7] = 100;
+		battle_stats[HP]         = stats[HP];
+		battle_stats[ATTACK]     = stats[ATTACK];
+		battle_stats[DEFENSE]    = stats[DEFENSE];
+		battle_stats[SP_ATTACK]  = stats[SP_ATTACK];
+		battle_stats[SP_DEFENSE] = stats[SP_DEFENSE];
+		battle_stats[SPEED]      = stats[SPEED];
+		battle_stats[ACCURACY]   = 100;
+		battle_stats[EVADE]      = 100;
 
 		level = level_in;
 		happiness = 70;
@@ -129,16 +105,9 @@ class Pokemon : public Species
 	}
 
 	int use_move(int choice) {
-		if (current_moves[choice].get_buff() == 0) {
-			std::cout << "Battle Stat: " << get_battle_stat(1) << std::endl;
-			std::cout << "Poke's Stat: " << get_current_stat(1) << std::endl;
-			return current_moves[choice].get_bp() + get_battle_stat(1) - get_current_stat(1);
-		}
-		else {
-			battle_stats[current_moves[choice].get_to_stat()] += current_moves[choice].get_buff();
-			std::cout << current_moves[choice].get_to_stat() << " " << battle_stats[current_moves[choice].get_to_stat()] << std::endl;
-			return 0;
-		}
+		std::cout << "Battle Stat: " << get_battle_stat(1) << std::endl;
+		std::cout << "Poke's Stat: " << get_current_stat(1) << std::endl;
+		return current_moves[choice].get_bp() + get_battle_stat(1) - get_current_stat(1);
 	}
 
 	void get_hit(int damage) {
