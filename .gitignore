@@ -1,4 +1,5 @@
 ﻿.settings/
 .project
 .cproject
-Debug/
+Debug/*.exe
+Debug/*.o
